@@ -1,0 +1,808 @@
+[gd_scene format=3 uid="uid://b1snaognjyux5"]
+
+[ext_resource type="Script" uid="uid://cit3gvfbhdloo" path="res://playerCar.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://bk6aqqbniajqo" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://743k15ou6tah" path="res://PlayerCar.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://dp8hdjqc55vf5" path="res://backgroundTop.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://n4dapkgd06bl" path="res://bridge.gd" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://427bfkm0ktep" path="res://backgroundBridge.png" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://bm4rfg7wb1l5s" path="res://asphalt.gd" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://df60p8httjgah" path="res://asphalt.png" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://sqdicpjcxiuh" path="res://whiteLine.png" id="10_4c57u"]
+[ext_resource type="Texture2D" uid="uid://s86w0hp2yvmt" path="res://curb.png" id="10_efxa6"]
+[ext_resource type="Texture2D" uid="uid://ch776nbov58qf" path="res://backgroundBottom.png" id="11_efxa6"]
+[ext_resource type="Script" uid="uid://be68x51eg0fme" path="res://bridgeStructure.gd" id="12_dg77c"]
+
+[node name="Main" type="Node2D" unique_id=1395557447]
+process_mode = 3
+script = ExtResource("1_1bvp3")
+
+[node name="PlayerCar" type="CharacterBody2D" parent="." unique_id=112468105]
+process_mode = 1
+z_index = 2
+position = Vector2(150, 324)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerCar" unique_id=434955119]
+texture_filter = 1
+position = Vector2(0, -20)
+scale = Vector2(4, 4)
+texture = ExtResource("3_h2yge")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerCar" unique_id=1522845296]
+polygon = PackedVector2Array(-70, -45, 20, -45, 40, -21, 95, -21, 95, 30, -90, 30, -90, -25)
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=391389713]
+process_mode = 1
+wait_time = 2.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1954247735]
+
+[node name="DistanceLabel" type="Label" parent="CanvasLayer" unique_id=1413500123]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer" unique_id=531499599]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=1871283028]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer" unique_id=1986132428]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer" unique_id=1862103907]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "GAME OVER!"
+horizontal_alignment = 1
+
+[node name="RestartLabel" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer" unique_id=1526306286]
+layout_mode = 2
+text = "Pressione R para reiniciar"
+
+[node name="SlowTimer" type="Timer" parent="." unique_id=1877769249]
+wait_time = 2.0
+one_shot = true
+
+[node name="BackgrounTop" type="Sprite2D" parent="." unique_id=401629296]
+texture_filter = 1
+position = Vector2(576, 84)
+texture = ExtResource("4_1bvp3")
+
+[node name="Bridge" type="Node2D" parent="." unique_id=194577034]
+process_mode = 1
+texture_filter = 1
+script = ExtResource("5_7mycd")
+
+[node name="Segment1" type="Sprite2D" parent="Bridge" unique_id=1402208466]
+position = Vector2(24, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment2" type="Sprite2D" parent="Bridge" unique_id=1984164754]
+position = Vector2(72, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment3" type="Sprite2D" parent="Bridge" unique_id=902044177]
+position = Vector2(120, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment4" type="Sprite2D" parent="Bridge" unique_id=774579861]
+position = Vector2(168, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment5" type="Sprite2D" parent="Bridge" unique_id=866554834]
+position = Vector2(216, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment6" type="Sprite2D" parent="Bridge" unique_id=1444028590]
+position = Vector2(264, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment7" type="Sprite2D" parent="Bridge" unique_id=1858041048]
+position = Vector2(312, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment8" type="Sprite2D" parent="Bridge" unique_id=618484965]
+position = Vector2(360, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment9" type="Sprite2D" parent="Bridge" unique_id=630659804]
+position = Vector2(408, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment10" type="Sprite2D" parent="Bridge" unique_id=1638447073]
+position = Vector2(456, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment11" type="Sprite2D" parent="Bridge" unique_id=583504025]
+position = Vector2(504, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment12" type="Sprite2D" parent="Bridge" unique_id=1429034655]
+position = Vector2(552, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment13" type="Sprite2D" parent="Bridge" unique_id=478681250]
+position = Vector2(600, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment14" type="Sprite2D" parent="Bridge" unique_id=655152021]
+position = Vector2(648, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment15" type="Sprite2D" parent="Bridge" unique_id=1519784241]
+position = Vector2(696, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment16" type="Sprite2D" parent="Bridge" unique_id=221738632]
+position = Vector2(744, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment17" type="Sprite2D" parent="Bridge" unique_id=1676417794]
+position = Vector2(792, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment18" type="Sprite2D" parent="Bridge" unique_id=175684808]
+position = Vector2(840, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment19" type="Sprite2D" parent="Bridge" unique_id=1117827742]
+position = Vector2(888, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment20" type="Sprite2D" parent="Bridge" unique_id=104542254]
+position = Vector2(936, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment21" type="Sprite2D" parent="Bridge" unique_id=1320921835]
+position = Vector2(984, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment22" type="Sprite2D" parent="Bridge" unique_id=413669942]
+position = Vector2(1032, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment23" type="Sprite2D" parent="Bridge" unique_id=541910031]
+position = Vector2(1080, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment24" type="Sprite2D" parent="Bridge" unique_id=76565790]
+position = Vector2(1128, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment25" type="Sprite2D" parent="Bridge" unique_id=1773095345]
+process_mode = 1
+position = Vector2(1176, 160)
+texture = ExtResource("5_lquwl")
+
+[node name="Bridge2" type="Node2D" parent="." unique_id=1703335114]
+process_mode = 1
+z_index = 3
+texture_filter = 1
+script = ExtResource("5_7mycd")
+
+[node name="Segment1" type="Sprite2D" parent="Bridge2" unique_id=1371916769]
+position = Vector2(24, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment2" type="Sprite2D" parent="Bridge2" unique_id=677572343]
+position = Vector2(72, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment3" type="Sprite2D" parent="Bridge2" unique_id=345238550]
+position = Vector2(120, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment4" type="Sprite2D" parent="Bridge2" unique_id=92317921]
+position = Vector2(168, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment5" type="Sprite2D" parent="Bridge2" unique_id=1402870975]
+position = Vector2(216, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment6" type="Sprite2D" parent="Bridge2" unique_id=166257776]
+position = Vector2(264, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment7" type="Sprite2D" parent="Bridge2" unique_id=1467097204]
+position = Vector2(312, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment8" type="Sprite2D" parent="Bridge2" unique_id=1134085811]
+position = Vector2(360, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment9" type="Sprite2D" parent="Bridge2" unique_id=799215876]
+position = Vector2(408, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment10" type="Sprite2D" parent="Bridge2" unique_id=1079754826]
+position = Vector2(456, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment11" type="Sprite2D" parent="Bridge2" unique_id=2141319680]
+position = Vector2(504, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment12" type="Sprite2D" parent="Bridge2" unique_id=761072789]
+position = Vector2(552, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment13" type="Sprite2D" parent="Bridge2" unique_id=1847189980]
+position = Vector2(600, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment14" type="Sprite2D" parent="Bridge2" unique_id=1304440844]
+position = Vector2(648, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment15" type="Sprite2D" parent="Bridge2" unique_id=564088234]
+position = Vector2(696, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment16" type="Sprite2D" parent="Bridge2" unique_id=1417556457]
+position = Vector2(744, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment17" type="Sprite2D" parent="Bridge2" unique_id=1042928698]
+position = Vector2(792, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment18" type="Sprite2D" parent="Bridge2" unique_id=227833327]
+position = Vector2(840, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment19" type="Sprite2D" parent="Bridge2" unique_id=1119210367]
+position = Vector2(888, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment20" type="Sprite2D" parent="Bridge2" unique_id=903341726]
+position = Vector2(936, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment21" type="Sprite2D" parent="Bridge2" unique_id=1444985365]
+position = Vector2(984, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment22" type="Sprite2D" parent="Bridge2" unique_id=1710557400]
+position = Vector2(1032, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment23" type="Sprite2D" parent="Bridge2" unique_id=1644417754]
+position = Vector2(1080, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment24" type="Sprite2D" parent="Bridge2" unique_id=1802266756]
+position = Vector2(1128, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Segment25" type="Sprite2D" parent="Bridge2" unique_id=1938217811]
+process_mode = 1
+position = Vector2(1176, 464)
+texture = ExtResource("5_lquwl")
+
+[node name="Asphalt" type="Node2D" parent="." unique_id=1416960886]
+process_mode = 1
+z_index = 1
+texture_filter = 1
+script = ExtResource("7_5vw27")
+
+[node name="AsphaltA1" type="Sprite2D" parent="Asphalt" unique_id=756638813]
+position = Vector2(48, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB1" type="Sprite2D" parent="Asphalt" unique_id=737024669]
+position = Vector2(48, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC1" type="Sprite2D" parent="Asphalt" unique_id=1788398570]
+position = Vector2(48, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA2" type="Sprite2D" parent="Asphalt" unique_id=1250118706]
+position = Vector2(144, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB2" type="Sprite2D" parent="Asphalt" unique_id=328238635]
+position = Vector2(144, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC2" type="Sprite2D" parent="Asphalt" unique_id=1475000207]
+position = Vector2(144, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA3" type="Sprite2D" parent="Asphalt" unique_id=356496492]
+position = Vector2(240, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB3" type="Sprite2D" parent="Asphalt" unique_id=773394251]
+position = Vector2(240, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC3" type="Sprite2D" parent="Asphalt" unique_id=67788305]
+position = Vector2(240, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA4" type="Sprite2D" parent="Asphalt" unique_id=1931625691]
+position = Vector2(336, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB4" type="Sprite2D" parent="Asphalt" unique_id=563031728]
+position = Vector2(336, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC4" type="Sprite2D" parent="Asphalt" unique_id=1602676480]
+position = Vector2(336, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA5" type="Sprite2D" parent="Asphalt" unique_id=32714761]
+position = Vector2(432, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB5" type="Sprite2D" parent="Asphalt" unique_id=484685807]
+position = Vector2(432, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC5" type="Sprite2D" parent="Asphalt" unique_id=1724736567]
+position = Vector2(432, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA6" type="Sprite2D" parent="Asphalt" unique_id=1452287345]
+position = Vector2(528, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB6" type="Sprite2D" parent="Asphalt" unique_id=660834]
+position = Vector2(528, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC6" type="Sprite2D" parent="Asphalt" unique_id=1852603561]
+position = Vector2(528, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA7" type="Sprite2D" parent="Asphalt" unique_id=1137601148]
+position = Vector2(624, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB7" type="Sprite2D" parent="Asphalt" unique_id=1279581839]
+position = Vector2(624, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC7" type="Sprite2D" parent="Asphalt" unique_id=985137620]
+position = Vector2(624, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA8" type="Sprite2D" parent="Asphalt" unique_id=1720566986]
+position = Vector2(720, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB8" type="Sprite2D" parent="Asphalt" unique_id=1001348307]
+position = Vector2(720, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC8" type="Sprite2D" parent="Asphalt" unique_id=782920567]
+position = Vector2(720, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA9" type="Sprite2D" parent="Asphalt" unique_id=1393822207]
+position = Vector2(816, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB9" type="Sprite2D" parent="Asphalt" unique_id=1254898817]
+position = Vector2(816, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC9" type="Sprite2D" parent="Asphalt" unique_id=1107586039]
+position = Vector2(816, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA10" type="Sprite2D" parent="Asphalt" unique_id=1931983035]
+position = Vector2(912, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB10" type="Sprite2D" parent="Asphalt" unique_id=769293738]
+position = Vector2(912, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC10" type="Sprite2D" parent="Asphalt" unique_id=100098337]
+position = Vector2(912, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA11" type="Sprite2D" parent="Asphalt" unique_id=2043892859]
+position = Vector2(1008, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB11" type="Sprite2D" parent="Asphalt" unique_id=1340253119]
+position = Vector2(1008, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC11" type="Sprite2D" parent="Asphalt" unique_id=1290291241]
+position = Vector2(1008, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA12" type="Sprite2D" parent="Asphalt" unique_id=2018495827]
+position = Vector2(1104, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB12" type="Sprite2D" parent="Asphalt" unique_id=888985167]
+position = Vector2(1104, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC12" type="Sprite2D" parent="Asphalt" unique_id=1863696799]
+position = Vector2(1104, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltA13" type="Sprite2D" parent="Asphalt" unique_id=455644033]
+position = Vector2(1200, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltB13" type="Sprite2D" parent="Asphalt" unique_id=459507763]
+position = Vector2(1200, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="AsphaltC13" type="Sprite2D" parent="Asphalt" unique_id=1408849266]
+position = Vector2(1200, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("7_272bh")
+
+[node name="WhiteLines" type="Node2D" parent="." unique_id=580532756]
+process_mode = 1
+texture_filter = 1
+
+[node name="WhiteLineA1" type="Sprite2D" parent="WhiteLines" unique_id=1316145289]
+position = Vector2(48, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB1" type="Sprite2D" parent="WhiteLines" unique_id=710867349]
+position = Vector2(48, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA2" type="Sprite2D" parent="WhiteLines" unique_id=1076151548]
+position = Vector2(144, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB2" type="Sprite2D" parent="WhiteLines" unique_id=586261502]
+position = Vector2(144, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA3" type="Sprite2D" parent="WhiteLines" unique_id=676271409]
+position = Vector2(240, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB3" type="Sprite2D" parent="WhiteLines" unique_id=642618939]
+position = Vector2(240, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA4" type="Sprite2D" parent="WhiteLines" unique_id=1170212113]
+position = Vector2(336, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB4" type="Sprite2D" parent="WhiteLines" unique_id=1728472018]
+position = Vector2(336, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA5" type="Sprite2D" parent="WhiteLines" unique_id=1132865166]
+position = Vector2(432, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB5" type="Sprite2D" parent="WhiteLines" unique_id=183545385]
+position = Vector2(432, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA6" type="Sprite2D" parent="WhiteLines" unique_id=806271171]
+position = Vector2(528, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB6" type="Sprite2D" parent="WhiteLines" unique_id=451015043]
+position = Vector2(528, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA7" type="Sprite2D" parent="WhiteLines" unique_id=1281727089]
+position = Vector2(624, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB7" type="Sprite2D" parent="WhiteLines" unique_id=993870683]
+position = Vector2(624, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA8" type="Sprite2D" parent="WhiteLines" unique_id=269872713]
+position = Vector2(720, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB8" type="Sprite2D" parent="WhiteLines" unique_id=22806724]
+position = Vector2(720, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA9" type="Sprite2D" parent="WhiteLines" unique_id=1464301667]
+position = Vector2(816, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB9" type="Sprite2D" parent="WhiteLines" unique_id=1980383807]
+position = Vector2(816, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA10" type="Sprite2D" parent="WhiteLines" unique_id=1398294612]
+position = Vector2(912, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB10" type="Sprite2D" parent="WhiteLines" unique_id=648105822]
+position = Vector2(912, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA11" type="Sprite2D" parent="WhiteLines" unique_id=45903260]
+position = Vector2(1008, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB11" type="Sprite2D" parent="WhiteLines" unique_id=1557447444]
+position = Vector2(1008, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA12" type="Sprite2D" parent="WhiteLines" unique_id=1338559193]
+position = Vector2(1104, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB12" type="Sprite2D" parent="WhiteLines" unique_id=993535866]
+position = Vector2(1104, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineA13" type="Sprite2D" parent="WhiteLines" unique_id=291118239]
+position = Vector2(1200, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="WhiteLineB13" type="Sprite2D" parent="WhiteLines" unique_id=1200929442]
+position = Vector2(1200, 374)
+scale = Vector2(2, 2)
+texture = ExtResource("10_4c57u")
+
+[node name="Curb" type="Node2D" parent="." unique_id=683427531]
+z_index = 1
+texture_filter = 1
+
+[node name="CurbA1" type="Sprite2D" parent="Curb" unique_id=1725830443]
+position = Vector2(48, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB1" type="Sprite2D" parent="Curb" unique_id=1873092760]
+position = Vector2(48, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="CurbA2" type="Sprite2D" parent="Curb" unique_id=1200391162]
+position = Vector2(144, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB2" type="Sprite2D" parent="Curb" unique_id=2105842299]
+position = Vector2(144, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="CurbA3" type="Sprite2D" parent="Curb" unique_id=1130953641]
+position = Vector2(240, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB3" type="Sprite2D" parent="Curb" unique_id=295126495]
+position = Vector2(240, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="CurbA4" type="Sprite2D" parent="Curb" unique_id=672888965]
+position = Vector2(336, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB4" type="Sprite2D" parent="Curb" unique_id=187527800]
+position = Vector2(336, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="CurbA5" type="Sprite2D" parent="Curb" unique_id=1117675090]
+position = Vector2(432, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB5" type="Sprite2D" parent="Curb" unique_id=984854391]
+position = Vector2(432, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="CurbA6" type="Sprite2D" parent="Curb" unique_id=1064874940]
+position = Vector2(528, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB6" type="Sprite2D" parent="Curb" unique_id=1206175175]
+position = Vector2(528, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="CurbA7" type="Sprite2D" parent="Curb" unique_id=526797412]
+position = Vector2(624, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB7" type="Sprite2D" parent="Curb" unique_id=326098636]
+position = Vector2(624, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="CurbA8" type="Sprite2D" parent="Curb" unique_id=286333667]
+position = Vector2(720, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB8" type="Sprite2D" parent="Curb" unique_id=1794947165]
+position = Vector2(720, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="CurbA9" type="Sprite2D" parent="Curb" unique_id=597693222]
+position = Vector2(816, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB9" type="Sprite2D" parent="Curb" unique_id=552036580]
+position = Vector2(816, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="CurbA10" type="Sprite2D" parent="Curb" unique_id=1316338945]
+position = Vector2(912, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB10" type="Sprite2D" parent="Curb" unique_id=2016382743]
+position = Vector2(912, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="CurbA11" type="Sprite2D" parent="Curb" unique_id=1946788658]
+position = Vector2(1008, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB11" type="Sprite2D" parent="Curb" unique_id=123207761]
+position = Vector2(1008, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="CurbA12" type="Sprite2D" parent="Curb" unique_id=2101989428]
+position = Vector2(1104, 174)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+
+[node name="CurbB12" type="Sprite2D" parent="Curb" unique_id=169099882]
+position = Vector2(1104, 474)
+scale = Vector2(2, 2)
+texture = ExtResource("10_efxa6")
+flip_v = true
+
+[node name="BackgroundBottom" type="Sprite2D" parent="." unique_id=1085826431]
+position = Vector2(576, 564)
+texture = ExtResource("11_efxa6")
+
+[node name="BridgeStructure" type="Node2D" parent="." unique_id=1700726138]
+process_mode = 1
+position = Vector2(0, -20)
+script = ExtResource("12_dg77c")
+
+[node name="Sprite2D" type="Sprite2D" parent="BridgeStructure" unique_id=1294251770]
+modulate = Color(0.33560213, 0.3836351, 0.45217618, 1)
+texture_filter = 1
+position = Vector2(192, 572)
+scale = Vector2(8, 8)
+texture = ExtResource("5_lquwl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BridgeStructure" unique_id=892877597]
+modulate = Color(0.33560213, 0.3836351, 0.45217618, 1)
+texture_filter = 1
+position = Vector2(576, 572)
+scale = Vector2(8, 8)
+texture = ExtResource("5_lquwl")
+
+[node name="Sprite2D3" type="Sprite2D" parent="BridgeStructure" unique_id=576346869]
+modulate = Color(0.33560213, 0.3836351, 0.45217618, 1)
+texture_filter = 1
+position = Vector2(960, 572)
+scale = Vector2(8, 8)
+texture = ExtResource("5_lquwl")
+
+[node name="Sprite2D4" type="Sprite2D" parent="BridgeStructure" unique_id=1895110842]
+modulate = Color(0.33560213, 0.3836351, 0.45217618, 1)
+texture_filter = 1
+position = Vector2(1344, 572)
+scale = Vector2(8, 8)
+texture = ExtResource("5_lquwl")
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]

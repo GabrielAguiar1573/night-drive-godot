@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bdl3ugdhwgscg"]
+
+[ext_resource type="Script" uid="uid://cujco50i0qdsj" path="res://obstacle.gd" id="1_pj10o"]
+[ext_resource type="Texture2D" uid="uid://c3877kkyr5q3r" path="res://pothole.png" id="2_pj10o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ttxvr"]
+radius = 50.0
+
+[node name="Obstacle" type="Area2D" unique_id=1576228433]
+process_mode = 1
+z_index = 1
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_pj10o")
+desaparecerAoColidir = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1358433779]
+texture_filter = 2
+position = Vector2(0, -10)
+scale = Vector2(5, 5)
+texture = ExtResource("2_pj10o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1907813722]
+visible = false
+shape = SubResource("CircleShape2D_ttxvr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
